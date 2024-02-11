@@ -3,5 +3,4 @@ const capitalize = (str) => {
     return capitalizedStr;
 }
 
-
 export default capitalize;
