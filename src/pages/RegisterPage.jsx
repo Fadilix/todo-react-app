@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "../components/Form";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [userData, setUserData] = useState({
@@ -9,6 +10,8 @@ const RegisterPage = () => {
     pass: "",
     confPass: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setUserData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -29,6 +32,7 @@ const RegisterPage = () => {
 
         if (res.status === 201) {
           toast.success("Registered successfully");
+          navigate("/login");
         } else {
           toast.error("Couldn't register, please try again");
         }
