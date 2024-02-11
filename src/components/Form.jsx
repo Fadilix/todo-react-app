@@ -8,7 +8,7 @@ const Form = ({
   userData,
   handleInputChange,
   title,
-  handleSubmit
+  handleSubmit,
 }) => {
   return (
     <div className="form">
@@ -21,7 +21,7 @@ const Form = ({
           <input
             name="user"
             type="text"
-            placeholder={`Enter your ${username}...`}
+            placeholder={`Enter your ${username}...`} 
             onChange={handleInputChange}
             value={userData.usernameValue}
           />
