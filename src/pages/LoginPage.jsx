@@ -30,7 +30,7 @@ const LoginPage = () => {
 
         if (res.status === 200) {
           toast.success("Login successfull");
-          navigate("/home");
+          navigate("/");
         } else {
           toast.error("Couldn't register, please try again");
         }
