@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import useTasks from "../hooks/useTasks";
 import "../scss/TodoList.scss";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 const TodoList = () => {
   const { tasks, setTasks } = useTasks();
+
+  const deleteTask = (id) => {
+    if (confirm("Are you sure you want to delete this task ?")) {
+      try {
+        axios.delete(`http://localhost:8081/api/todos/${id}`);
+        toast.success("Task deleted successfully!");
+      } catch (error) {
+        toast.error("Error while deleting task!");
+        console.error("Error while deleting task" + error.message);
+      }
+    } 
+
+    return;
+  };
+
   console.log(tasks);
   return (
     <div className="todo-list-main">
@@ -12,9 +29,12 @@ const TodoList = () => {
         ) : (
           tasks.map((task) => {
             return (
-              <div className="task">
+              <div className="task" key={task.id}>
                 <p>{task.task}</p>
-                <button className="delete-button">
+                <button
+                  className="delete-button"
+                  onClick={() => deleteTask(task.id)}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

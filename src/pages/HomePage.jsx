@@ -14,10 +14,14 @@ const HomePage = () => {
     description: "",
   });
   // Toggle the popup when clicking the "Add Task" button
+
+  const handleShowPopup = () => {
+    setShowPopup(!showPopup);
+  };
   const handleAddTask = () => {
-    setShowPopup(true);
     try {
-      axios.post("http://localhost:8081/api/todo", popupData);
+      axios.post("http://localhost:8081/api/todos", popupData);
+      setShowPopup(!showPopup);
       toast.success("Task added successfully");
     } catch (error) {
       console.error("Task added failed");
@@ -48,7 +52,7 @@ const HomePage = () => {
         <Navbar />
       </div>
       <div className="todos">
-        <TodoHeader />
+        <TodoHeader handleShowPopUp={handleShowPopup} />
         <TodoList />
       </div>
 

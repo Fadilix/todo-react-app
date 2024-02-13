@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import capitalize from "../utils/UsualFunctions";
 import "../scss/TodoHeader.scss";
+import axios from "axios";
 
-const TodoHeader = () => {
+const TodoHeader = ({ handleShowPopUp }) => {
   const currentDate = new Date();
   const options = {
     weekday: "long",
@@ -10,6 +11,20 @@ const TodoHeader = () => {
   const dayString = capitalize(currentDate.toLocaleString("en-US", options));
   const dayInt = currentDate.toLocaleString("en-US", { day: "2-digit" });
   const monthString = currentDate.toLocaleString("en-US", { month: "long" });
+
+  const [numberOfTasks, setNumberOfTasks] = useState(null);
+
+  useEffect(() => {
+    const getNumberOfTodos = async () => {
+      const response = await axios.get("http://localhost:8081/api/todos/num");
+      setNumberOfTasks(response.data.count);
+      console.log(response.data.count);
+    };
+
+    getNumberOfTodos();
+
+    getNumberOfTodos();
+  }, []);
 
   return (
     <div className="date-nbtasks">
@@ -20,8 +35,8 @@ const TodoHeader = () => {
         <p>{monthString}</p>
       </div>
 
-      <p>12 tasks</p>
-      <button>
+      <p>{numberOfTasks} tasks</p>
+      <button onClick={handleShowPopUp}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
