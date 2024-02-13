@@ -3,14 +3,31 @@ import Navbar from "../components/Navbar";
 import "../scss/HomePage.scss";
 import TodoHeader from "../components/TodoHeader";
 import TodoList from "../components/TodoList";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
-  const [popuDate, setPopupDate] = useState({})
+  const [popupData, setPopupData] = useState({
+    task: "",
+    description: "",
+  });
   // Toggle the popup when clicking the "Add Task" button
   const handleAddTask = () => {
     setShowPopup(true);
+    try {
+      axios.post("http://localhost:8081/api/todo", popupData);
+      toast.success("Task added successfully");
+    } catch (error) {
+      console.error("Task added failed");
+      toast.error("Task added failed");
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setPopupData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // console.log(popupData);
   };
 
   const handlePopupSubmit = (e) => {
@@ -31,7 +48,7 @@ const HomePage = () => {
         <Navbar />
       </div>
       <div className="todos">
-        <TodoHeader handleAddTask={handleAddTask} />
+        <TodoHeader />
         <TodoList />
       </div>
 
@@ -44,10 +61,21 @@ const HomePage = () => {
             <h3>Add Task</h3>
             <form onSubmit={handlePopupSubmit}>
               <label htmlFor="taskName">Task Name:</label>
-              <input type="text" id="taskName" name="taskName" />
+              <input
+                type="text"
+                id="taskName"
+                name="task"
+                value={popupData.task}
+                onChange={handleInputChange}
+              />
 
               <label htmlFor="taskDescription">Task Description:</label>
-              <textarea id="taskDescription" name="taskDescription"></textarea>
+              <textarea
+                id="taskDescription"
+                name="description"
+                onChange={handleInputChange}
+                value={popupData.description}
+              ></textarea>
 
               <div className="buttons-container">
                 <button type="button" onClick={() => setShowPopup(false)}>

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import capitalize from "../utils/UsualFunctions";
 import "../scss/TodoHeader.scss";
 
-const TodoHeader = ({ handleAddTask }) => {
-  const [showPopup, setShowPopup] = useState(false);
-
+const TodoHeader = () => {
   const currentDate = new Date();
   const options = {
     weekday: "long",
@@ -12,7 +10,6 @@ const TodoHeader = ({ handleAddTask }) => {
   const dayString = capitalize(currentDate.toLocaleString("en-US", options));
   const dayInt = currentDate.toLocaleString("en-US", { day: "2-digit" });
   const monthString = currentDate.toLocaleString("en-US", { month: "long" });
-
 
   return (
     <div className="date-nbtasks">
@@ -24,7 +21,7 @@ const TodoHeader = ({ handleAddTask }) => {
       </div>
 
       <p>12 tasks</p>
-      <button onClick={handleAddTask}>
+      <button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
