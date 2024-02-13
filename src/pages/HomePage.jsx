@@ -7,9 +7,14 @@ import TodoList from "../components/TodoList";
 const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
 
+  const [popuDate, setPopupDate] = useState({})
   // Toggle the popup when clicking the "Add Task" button
   const handleAddTask = () => {
     setShowPopup(true);
+  };
+
+  const handlePopupSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -37,7 +42,7 @@ const HomePage = () => {
               &times;
             </span>
             <h3>Add Task</h3>
-            <form>
+            <form onSubmit={handlePopupSubmit}>
               <label htmlFor="taskName">Task Name:</label>
               <input type="text" id="taskName" name="taskName" />
 
