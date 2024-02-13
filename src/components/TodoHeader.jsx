@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import capitalize from "../utils/UsualFunctions";
+import "../scss/TodoHeader.scss";
 
-// todo header for the date and the add function
 const TodoHeader = ({ handleAddTask }) => {
+  const [showPopup, setShowPopup] = useState(false);
+
   const currentDate = new Date();
   const options = {
     weekday: "long",
   };
-  const dayString = currentDate.toLocaleString("en-US", options);
+  const dayString = capitalize(currentDate.toLocaleString("en-US", options));
   const dayInt = currentDate.toLocaleString("en-US", { day: "2-digit" });
   const monthString = currentDate.toLocaleString("en-US", { month: "long" });
+
+
   return (
     <div className="date-nbtasks">
       <div className="dates">
         <h2>
-          {capitalize(dayString)}, {dayInt} {currentDate.getFullYear()}
+          {dayString}, {dayInt} {currentDate.getFullYear()}
         </h2>
         <p>{monthString}</p>
       </div>
