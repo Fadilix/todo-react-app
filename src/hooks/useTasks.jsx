@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 
 const useTasks = () => {
-  const [tasks, setTasks] = useState({});
+  const [tasks, setTasks] = useState([{}]);
 
   useEffect(() => {
     const fetchTAsks = async () => {

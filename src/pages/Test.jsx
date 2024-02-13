@@ -9,7 +9,7 @@ const Test = () => {
     <div>
       <ul>
         {tasks.map((task) => (
-          <li key={task.id}>{task.task}</li>
+          <li>{task.task}</li>
         ))}
       </ul>
     </div>
