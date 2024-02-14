@@ -1,5 +1,6 @@
 import React from "react";
 import "../scss/Form.scss";
+import capitalize from "../utils/UsualFunctions";
 
 const Form = ({
   username,
@@ -15,22 +16,18 @@ const Form = ({
       <h1>{title}</h1>
       <form action="" onSubmit={handleSubmit}>
         <div className="field-row">
-          <label htmlFor="">
-            {username.charAt(0).toUpperCase() + username.slice(1)}
-          </label>
+          <label htmlFor="">{capitalize(username)}</label>
           <input
             name="user"
             type="text"
-            placeholder={`Enter your ${username}...`} 
+            placeholder={`Enter your ${username}...`}
             onChange={handleInputChange}
             value={userData.usernameValue}
           />
         </div>
 
         <div className="field-row">
-          <label htmlFor="">
-            {password.charAt(0).toUpperCase() + password.slice(1)}
-          </label>
+          <label htmlFor="">{capitalize(password)}</label>
           <input
             name="pass"
             type="text"
@@ -42,10 +39,7 @@ const Form = ({
 
         {confirmPassword && (
           <div className="field-row">
-            <label htmlFor="">
-              {confirmPassword.charAt(0).toUpperCase() +
-                confirmPassword.slice(1)}
-            </label>
+            <label htmlFor="">{capitalize(confirmPassword)}</label>
             <input
               name="confPass"
               type="text"
