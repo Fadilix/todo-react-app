@@ -29,6 +29,9 @@ const HomePage = () => {
       toast.error("Task added failed");
     }
 
+    popupData.task = "";
+    popupData.description = "";
+
     // window.location.reload();
   };
 
