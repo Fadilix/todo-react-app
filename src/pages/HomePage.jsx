@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import "../scss/HomePage.scss";
 import TodoHeader from "../components/TodoHeader";
@@ -13,8 +13,8 @@ const HomePage = () => {
     task: "",
     description: "",
   });
-  // Toggle the popup when clicking the "Add Task" button
 
+  // Toggle the popup
   const handleShowPopup = () => {
     setShowPopup(!showPopup);
   };
@@ -27,6 +27,8 @@ const HomePage = () => {
       console.error("Task added failed");
       toast.error("Task added failed");
     }
+
+    // window.location.reload();
   };
 
   const handleInputChange = (e) => {

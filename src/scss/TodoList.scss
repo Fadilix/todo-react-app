@@ -17,6 +17,7 @@
         width: 40px;
         height: 40px;
         transition: .3s all ease;
+        // background-color: red;
 
         &:hover {
             scale: 1.08;
@@ -28,5 +29,31 @@
         align-items: center;
         gap: 40px;
         justify-content: space-between;
+        border: 1px solid #aaa;
+        padding: 20px;
+        border-radius: 8px;
+        transition: .3s all ease;
+        cursor: pointer;
+
+
+        &:hover {
+            transform: translateY(-5px);
+            border: 1px solid lightcoral;
+        }
+
+        .task-info {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+
+            p:first-child {
+                font-size: 30px;
+            }
+
+            p:last-child {
+                color: lightslategrey;
+            }
+
+        }
     }
 }

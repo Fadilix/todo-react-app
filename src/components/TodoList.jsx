@@ -15,10 +15,11 @@ const TodoList = () => {
         toast.error("Error while deleting task!");
         console.error("Error while deleting task" + error.message);
       }
-    } 
+    }
 
     return;
   };
+
 
   console.log(tasks);
   return (
@@ -30,7 +31,10 @@ const TodoList = () => {
           tasks.map((task) => {
             return (
               <div className="task" key={task.id}>
-                <p>{task.task}</p>
+                <div className="task-info">
+                  <p>{task.task}</p>
+                  <p>{task.description.toString().substring(0, 100) + "..."}</p>
+                </div>
                 <button
                   className="delete-button"
                   onClick={() => deleteTask(task.id)}
