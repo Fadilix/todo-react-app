@@ -5,6 +5,7 @@ import TodoHeader from "../components/TodoHeader";
 import TodoList from "../components/TodoList";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import PopUp from "../components/PopUp";
 
 const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -59,41 +60,15 @@ const HomePage = () => {
       </div>
 
       {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <span className="close-btn" onClick={() => setShowPopup(false)}>
-              &times;
-            </span>
-            <h3>Add Task</h3>
-            <form onSubmit={handlePopupSubmit}>
-              <label htmlFor="taskName">Task Name:</label>
-              <input
-                type="text"
-                id="taskName"
-                name="task"
-                value={popupData.task}
-                onChange={handleInputChange}
-              />
-
-              <label htmlFor="taskDescription">Task Description:</label>
-              <textarea
-                id="taskDescription"
-                name="description"
-                onChange={handleInputChange}
-                value={popupData.description}
-              ></textarea>
-
-              <div className="buttons-container">
-                <button type="button" onClick={() => setShowPopup(false)}>
-                  Close
-                </button>
-                <button type="submit" onClick={() => handleAddTask()}>
-                  Add Task
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
+        <PopUp
+          handleInputChange={handleInputChange}
+          handlePopupSubmit={handlePopupSubmit}
+          popupData={popupData}
+          title={"Add task"}
+          buttonLabel={"Submit"}
+          handleAddTask={handleAddTask}
+          setShowPopup={setShowPopup}
+        />
       )}
     </div>
   );
