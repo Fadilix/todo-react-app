@@ -6,7 +6,8 @@ import axios from "axios";
 
 const LoginPage = () => {
   const [userData, setUserData] = useState({
-    user: "",
+    user: ""
+,
     pass: "",
   });
 
