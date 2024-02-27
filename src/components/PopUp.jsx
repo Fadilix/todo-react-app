@@ -9,7 +9,6 @@ const PopUp = ({
   handleAddTask,
   setShowPopup,
 }) => {
-
   return (
     <div className="popup-overlay">
       <div className="popup-content">
