@@ -24,9 +24,7 @@ const TodoList = () => {
     return;
   };
 
-  const editTask = (id) => {
-    
-  };
+  const editTask = (id) => {};
 
   console.log(tasks);
   return (
