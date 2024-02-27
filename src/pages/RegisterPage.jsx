@@ -42,8 +42,6 @@ const RegisterPage = () => {
     }
   };
 
-
-  
   return (
     <div>
       <Form
