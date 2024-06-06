@@ -21,9 +21,9 @@ const RegisterPage = () => {
     e.preventDefault();
     try {
       if (!userData.user || !userData.pass || !userData.confPass) {
-        toast.error("You must provide a username and a password");
+        toast.error("You must provide a username and a password", { style });
       } else if (userData.pass !== userData.confPass) {
-        toast.error("The passwords must match");
+        toast.error("The passwords must match", { style });
       } else {
         const res = await axios.post("http://localhost:8081/api/users/signup", {
           username: userData.user,
@@ -31,14 +31,14 @@ const RegisterPage = () => {
         });
 
         if (res.status === 201) {
-          toast.success("Registered successfully");
+          toast.success("Registered successfully", { style });
           navigate("/login");
         } else {
-          toast.error("Couldn't register, please try again");
+          toast.error("Couldn't register, please try again", { style });
         }
       }
     } catch (error) {
-      toast.error("Server error", error.message);
+      toast.error("Server error", error.message, { style });
     }
   };
 

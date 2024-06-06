@@ -6,6 +6,7 @@ import TodoList from "../components/TodoList";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import PopUp from "../components/PopUp";
+import { style } from "../themes/toastThemes";
 
 const HomePage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -14,7 +15,6 @@ const HomePage = () => {
     task: "",
     description: "",
   });
-  
 
   // Toggle the popup
   const handleShowPopup = () => {
@@ -24,10 +24,12 @@ const HomePage = () => {
     try {
       axios.post("http://localhost:8081/api/todos", popupData);
       setShowPopup(!showPopup);
-      toast.success("Task added successfully");
+      toast.success("Task added successfully", { style });
     } catch (error) {
       console.error("Task added failed");
-      toast.error("Task added failed");
+      toast.error("Task added failed", {
+        style,
+      });
     }
 
     popupData.task = "";

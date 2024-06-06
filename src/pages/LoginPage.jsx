@@ -21,7 +21,7 @@ const LoginPage = () => {
 
     try {
       if (!userData.user || !userData.pass) {
-        toast.error("You must provide a username and a password");
+        toast.error("You must provide a username and a password", { style });
       } else {
         const res = await axios.post("http://localhost:8081/api/users/login", {
           username: userData.user,
@@ -29,15 +29,15 @@ const LoginPage = () => {
         });
 
         if (res.status === 200) {
-          toast.success("Login successfull");
+          toast.success("Login successfull", { style });
           navigate("/");
         } else {
-          toast.error("Couldn't register, please try again");
+          toast.error("Couldn't register, please try again", { style });
         }
       }
     } catch (error) {
       console.error(error.message);
-      toast.error("Error logging in", error.message);
+      toast.error("Error logging in", error.message, { style });
     }
   };
   return (
