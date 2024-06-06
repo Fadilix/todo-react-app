@@ -1,6 +1,10 @@
 # Todo App (I Came back to finish the app)
 Simple todo app for training React. 
 
+
+You can find the api i created for this app [here](https://github.com/Fadilix/todo-node-api)
+
+
 ## Made with
 - React in the frontend
 - Express in the backend
