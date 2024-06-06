@@ -23,7 +23,6 @@ const TodoHeader = ({ handleShowPopUp }) => {
 
     getNumberOfTodos();
 
-    getNumberOfTodos();
   }, []);
 
   return (
