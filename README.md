@@ -1,4 +1,4 @@
-# Todo App
+# Todo App (I Came back to finish the app)
 Simple todo app for training React. 
 
 ## Made with
